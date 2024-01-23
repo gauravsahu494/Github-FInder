@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>GitHubFinder</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .repo-card {
+            margin-bottom: 20px;
+        }
+
+        .loader {
+            display: none;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Search GitHub User Details and Repositories</h2>
+        <div class="form-group">
+            <label for="username">Search GitHub User:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter GitHub username">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="searchUser()">Search User</button>
+
+        <!-- Repo per page selection -->
+        <div id="repoPerPageContainer" class="form-group mt-3" style="display: none;">
+            <label for="reposPerPageSelect">Select Repositories Per Page:</label>
+            <select class="form-control" id="reposPerPageSelect" onchange="applyRepoPerPage()">
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <!-- User details -->
+        <div id="result" class="mt-4 row"></div>
+
+        <!-- Loader -->
+        <div id="loader" class="text-center mt-4 loader">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="mt-4" style="display: none;">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" id="prevPage">
+                        <a class="page-link" href="#" aria-label="Previous" onclick="prevPage()">
+                            <span aria-hidden="true">&laquo; Prev</span>
+                        </a>
+                    </li>
+                    <li class="page-item d-flex" id="pageList"></li>
+                    <li class="page-item" id="nextPage">
+                        <a class="page-link" href="#" aria-label="Next" onclick="nextPage()">
+                            <span aria-hidden="true">Next &raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
